@@ -1,0 +1,15 @@
+ 
+#map {
+    width: 100%;
+    height: 300px;
+
+}
+
+.float-left {
+    float: left;
+}
+
+body {
+    /* background-color: #e9f6ff; */
+    background-color: #e6f3f6;
+}

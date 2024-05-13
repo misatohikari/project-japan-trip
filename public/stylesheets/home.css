@@ -1,0 +1,40 @@
+body {
+    height: 100vh;
+    /* this adding two background images. one with the picture, the other provide smokey dark seethrough color */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), */
+    /* url("https://res.cloudinary.com/dgrunp6ja/image/upload/v1715469306/JapanTrip/gzspdrjfh5eepp0bm9a1.jpg"); center */
+    url("https://res.cloudinary.com/dgrunp6ja/image/upload/v1715469307/JapanTrip/d0ex4jk8we7vhu1edbtx.jpg");
+
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    color: rgba(255,255,255,0.5);
+    border-bottom-color:rgba(255,255,255,0.5);
+}
+
+.nav-link.active {
+    color: white;
+    border-bottom-color:white;
+
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color: #333;
+    text-shadow: none;
+}

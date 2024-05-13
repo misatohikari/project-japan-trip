@@ -1,0 +1,72 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+    <h1 class="text-center">New Landmark</h1>
+    <div class="col-6 offset-3">
+        <!-- Form validation checking with bootstrap - 1. put required for all inputs. 2. in the form, add 'novalidate' keyword to disable default validation
+            3. add class="validated-form" in the form 4.if we want to have specified feedback, then add div class=valid-feedback -->
+        <form action="/japanLandmark" method="post" novalidate class="validated-form" enctype="multipart/form-data" >
+        <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" id="title" name="japanLandmark[title]" required>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <label class="form-label" for="location">Location</label>
+            <input class="form-control" type="text" id="location" name="japanLandmark[location]" required>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <!-- <div class="mb-3">
+            <label class="form-label" for="image">Image Url</label>
+            <input class="form-control" type="text" id="image" name="japanLandmark[image]" required>
+        </div>
+        <div class="valid-feedback"> Looks good!</div> -->
+
+        <div class="mb-3">
+            <label class="form-label" for="price">Entrance Fee</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                    aria-describedby="price-label" name="japanLandmark[price]" required>
+            </div>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+          <div class="mb-3">
+            <label class="form-label" for="descriptor">Descriptor</label>
+            <div class="input-group">
+              <select id="descriptor" name="japanLandmark[descriptor]" required class="form-select">
+                <% descriptors.forEach(descriptor=>{ %>
+                  <option value="<%= descriptor.id %>">
+                    <%= descriptor.name %>
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" id="description"
+                name="japanLandmark[description]" required></textarea>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <div class="form-file custom-file"> 
+                <!-- https://getbootstrap.com/docs/5.0/forms/form-control/ css from here.-->
+                <input type="file" class="form-file-input" id="images" name="images" multiple>
+                <label class="form-file-label" for="images">
+                    <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-success">Add Landmark</button>
+        </div>
+        </form>
+    </div>
+</div>

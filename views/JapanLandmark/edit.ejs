@@ -1,0 +1,88 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+    <h1 class="text-center">Edit Landmark</h1>
+    <div class="col-6 offset-3">
+        <!-- disabled the validation comes from bootstrap but apply own custom validation  -->
+        <form method="post" action="/japanLandmark/<%= japanLandmark._id%>?_method=put" novalidate class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" id="title" name="japanLandmark[title]"
+                value="<%= japanLandmark.title %>" required>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <label class="form-label" for="location">Location</label>
+            <input class="form-control" type="text" id="location" name="japanLandmark[location]"
+                value="<%=japanLandmark.location %>" required>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                    aria-describedby="price-label" name="japanLandmark[price]" value="<%=japanLandmark.price %>" required>
+            </div>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <label class="form-label" for="descriptor">Descriptor</label>
+            <div class="input-group">
+              <select id="descriptor" name="japanLandmark[descriptor]" required class="form-select">
+                <% descriptors.forEach(descriptor=>{ %>
+                  <option <%= (japanLandmark.descriptor ==  descriptor.id) ? "selected" : "" %> value="<%= descriptor.id %>">
+                    <%= descriptor.name %>
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" id="description"
+                name="japanLandmark[description]" required><%= japanLandmark.description%></textarea>
+        </div>
+        <div class="valid-feedback"> Looks good!</div>
+
+        <div class="mb-3">
+            <div class="form-file custom-file">
+                <!-- here add multiple unless user can choose only 1 file  -->
+                <input type="file" class="form-file-input" id="images" name="images" multiple>
+                <label class="form-file-label" for="images">
+                    <span class="form-file-text custom-file-label">Add more image(s)...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <!-- add deleting images -->
+            <% if (japanLandmark.images && japanLandmark.images.length > 0) { %>
+                <% japanLandmark.images.forEach(function(img, i) {  %>
+                    <!-- thumbnail make the size of the pic 200 x 200 and the same size -->
+                    <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                    <!-- this is to add checkbox to delete images since we loop through array and know which to delete,
+                    provide id with index. value is required to delete from the server side info-->
+                    <div class="form-check-inline"> 
+                        <input type="checkbox" id="images-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                    </div>
+                    <label for="images-<%= i %>">Delete?</label>
+                <% }) %>
+            <% } else { %>
+                <p>No images available.</p>
+            <% } %>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <button class="btn btn-info ">Update Landmark</button>
+            </div>
+            <div class="col-md-6 mb-3">
+                <a href="/japanLandmark/<%= japanLandmark._id %>" class="btn btn-secondary">Back to Landmark</a>
+            </div>
+        </div>
+        
+    </div>
+</div>

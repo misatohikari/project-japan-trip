@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate')%> 
+<div class="row">
+    <div class="col-6" offset-3>
+
+    <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= err.message%></h4>
+     <!-- don't show the err.stack outside of the development. since we don't wanna change the err saying
+            in which file, which line shows error and so on to the user.  -->
+            <% if (process.env.NODE_ENV !== "production") { %> 
+              <p><%= err.stack %></p>
+              <% } %>
+  </div>
+</div>
+</div>
