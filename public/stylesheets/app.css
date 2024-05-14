@@ -4,12 +4,27 @@
     height: 300px;
 
 }
-
-.float-left {
-    float: left;
-}
-
 body {
     /* background-color: #e9f6ff; */
     background-color: #e6f3f6;
+}
+
+left-content {
+    order: 1; /* Ensure left content appears before right content */
+}
+
+.right-content {
+    order: 2; /* Ensure right content appears after left content */
+}
+
+/* Media query to stack content on small screens */
+@media (max-width: 767.98px) {
+    .left-content,
+    .right-content {
+        order: 0; /* Reset order to default for small screens */
+    }
+}
+.button-group {
+    display: flex;
+    gap: 20px; 
 }

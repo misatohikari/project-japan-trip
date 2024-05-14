@@ -1,8 +1,9 @@
 <% layout("layouts/boilerplate") %>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 
+<div class="container">
 <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="left-content col-md-6">
         <!-- https://getbootstrap.com/docs/4.0/components/carousel/ 
         css is taken from this to show multiple card nicely. -->
         <div id="japanLandmarkCarousel" class="carousel slide" data-ride="carousel">
@@ -30,12 +31,11 @@
             </a>
             <% } %>
         </div>
-
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title"><%= japanLandmark.title%></h5>
                 <p class="card-text"><%= japanLandmark.description%></p>
-            </div>
+            
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= japanLandmark.location%></li>
                 <li class="list-group-item">Submitted by <%= japanLandmark.author.username%></li>
@@ -43,19 +43,21 @@
             </ul>
                 <!-- currentUser is set up in the .use middleware. so currentUser comes form that -->
                 <% if(currentUser && japanLandmark.author.equals(currentUser._id)) { %> 
-                <div class="card-body">
+                    <div class="button-group">
                 <a class="card-link btn btn-info" href="/japanLandmark/<%= japanLandmark._id%>/edit">Edit</a>
                 <form class="d-inline" method="post" action="/japanLandmark/<%= japanLandmark._id %>?_method=delete" >
                     <button class="btn btn-danger">Delete</button>
-                <% } %>
                 </form>
                 </div>
+                <% } %>
+            </div>
         </div>
-        <a href="/japanLandmark" class="btn btn-secondary">Back to Landmarks</a>
+        <div class="button-group">
+            <a href="/japanLandmark" class="btn btn-secondary">Back to Landmarks</a>
+            </div>
     </div>
-    <div class="col-md-6 mb-3">
 
-    <!-- <div class="col-md-6" float-left> -->
+    <div class="right-content col-md-6">
         <div id='map' ></div>
         <br>
 
@@ -76,9 +78,9 @@
             </div>
         <% } %>
         
+        <a href="/japanLandmark/new">Leave a Review</a>
         <% if(currentUser) {%>
             <div class="mb-3">
-            <h2>Leave a Review</h2>
             <form action="/japanLandmark/<%= japanLandmark._id%>/reviews" method="post" class="mb-3 validated-form" novalidate>
             <!-- <div class="mb-3">
                 <label class="form-label" for="rating">Rating</label>
@@ -107,6 +109,7 @@
             </form>
         <% } %>
     </div>
+</div>
 </div>
 
 <!-- this part is added for mapbox -->
