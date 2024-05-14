@@ -38,7 +38,7 @@ JapanTrip is a web application designed to help users explore and discover vario
 
 - **edit.ejs**: Allows authenticated users to edit existing landmarks. Users can modify the title, location, price, descriptor, description, and upload additional images.
 
-![alt text](./md/img/japanLandmarkEdit.png)
+  ![alt text](./md/img/japanLandmarkEdit.png)
 
 - **new.ejs**: Enables authenticated users to add new landmarks to the platform. Users can input the title, location, price, descriptor, description, and upload images for the new landmark.
 
