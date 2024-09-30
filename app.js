@@ -18,7 +18,7 @@ const japanLandmarkRoutes = require("./routes/japanLandmark");
 const reviewRoutes = require("./routes/review");
 const userRoutes = require("./routes/user");
 
-const HTTP_PORT = process.env.PORT || 8080;
+const HTTP_PORT = 8080;
 
 const dbMongo = process.env.MONGODB;
 mongoose.connect(dbMongo);

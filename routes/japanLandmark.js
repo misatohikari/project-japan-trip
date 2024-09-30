@@ -10,6 +10,7 @@ const multer = require("multer");// this is added as a middleware to parse the m
 const { storage, cloudinary } = require('../cloudinary'); // this is the destination we wanna store as storage for multipart, uploaded files. 
 // we can use the service cloudinary, or aws for storing the image since mongo can't store image which is too big. 
 const upload = multer({ storage });
+require('dotenv').config();
 
 // use geocoding for setting and accessing the map - npm install @mapbox/mapbox-sdk
 // https://github.com/mapbox/mapbox-sdk-js/blob/main/docs/services.md#forwardgeocode
